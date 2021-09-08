@@ -1,7 +1,19 @@
 import Phaser from 'phaser';
 import config from './config';
-import GameScene from './scenes/Game';
+import MainScene from './scenes/MainScene';
+import StartScene from './scenes/StartScene'
 
-new Phaser.Game(Object.assign(config, {
-  scene: [GameScene],
-}));
+
+const startScene = new StartScene()
+const mainScene = new MainScene();
+
+var game = new Phaser.Game(config);
+
+// load scenes
+game.scene.add('MainScene', mainScene);
+game.scene.add('StartScene', startScene);
+
+
+
+// start title
+game.scene.start('StartScene');
